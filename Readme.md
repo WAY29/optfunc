@@ -26,6 +26,9 @@ func NewClient(opts ...OptionsFunc) {
 func main() {
 	NewClient()
 	NewClient(With("address", "192.168.1.1"))
+	// outputs
+	// Address is 127.0.0.1:80
+	// Address is 192.168.1.1:80
 }
 
 ```
