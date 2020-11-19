@@ -8,7 +8,7 @@ package main
 
 import (
 	"fmt"
-	. "github.com/way29/optfunc"
+	. "github.com/WAY29/optfunc"
 )
 
 /*
