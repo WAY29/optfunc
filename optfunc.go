@@ -1,13 +1,13 @@
 package optfunc
 
 type OptionsParams map[string]interface{}
-type OptionsFunc func(o *Options)
+type Options func(o *OptionsStruct)
 
-type Options struct {
+type OptionsStruct struct {
 	optionalParams OptionsParams
 }
 
-func (o *Options) Get(name string) interface{} {
+func (o *OptionsStruct) Get(name string) interface{} {
 	v, ok := o.optionalParams[name]
 	if !ok {
 		return nil
@@ -16,19 +16,19 @@ func (o *Options) Get(name string) interface{} {
 	}
 }
 
-func (o *Options) Apply(opts ...OptionsFunc) *Options {
+func (o *OptionsStruct) Apply(opts ...Options) *OptionsStruct {
 	for _, f := range opts {
 		f(o)
 	}
 	return o
 }
 
-func With(name string, value interface{}) OptionsFunc {
-	return func(o *Options) {
+func With(name string, value interface{}) Options {
+	return func(o *OptionsStruct) {
 		o.optionalParams[name] = value
 	}
 }
 
-func NewOptions(op OptionsParams) *Options {
-	return &Options{optionalParams: op}
+func NewOptions(op OptionsParams) *OptionsStruct {
+	return &OptionsStruct{optionalParams: op}
 }
