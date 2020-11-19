@@ -16,10 +16,11 @@ func (o *Options) Get(name string) interface{} {
 	}
 }
 
-func (o *Options) Apply(opts ...OptionsFunc) {
+func (o *Options) Apply(opts ...OptionsFunc) *Options {
 	for _, f := range opts {
 		f(o)
 	}
+	return o
 }
 
 func With(name string, value interface{}) OptionsFunc {

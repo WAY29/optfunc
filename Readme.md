@@ -19,8 +19,7 @@ address string "127.0.0.1"
 port string "80"
 */
 func NewClient(opts ...OptionsFunc) {
-	o := NewOptions(OptionsParams{"address": "127.0.0.1", "port": "80"})
-	o.Apply(opts...)
+	o := NewOptions(OptionsParams{"address": "127.0.0.1", "port": "80"}).Apply(opts...)
 	fmt.Printf("Address is %s:%s\n", o.Get("address"), o.Get("port"))
 }
 
