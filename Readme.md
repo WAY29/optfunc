@@ -12,7 +12,7 @@ import (
 )
 
 /*
-Use optfun.With for options
+Use optfunc.With for options
 
 address string "127.0.0.1"
 
